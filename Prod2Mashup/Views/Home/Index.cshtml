@@ -1,0 +1,166 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Navbar -->
+@await Html.PartialAsync("_Navbar")
+
+<!-- Sidebar -->
+@await Html.PartialAsync("_Asidebar")
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper ml-0">
+    <!-- Content Header -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">
+                        <i class="fas fa-home"></i> Bienvenido a Puebla
+                    </h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right bg-transparent">
+                        <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                        <li class="breadcrumb-item">Página Principal</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+            <!--Clima-->
+            <div class="row">
+                <!-- Formulario de consulta -->
+                <div class="col-md-6">
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-search"></i> Consultar Clima</h3>
+                        </div>
+                        <div class="card-body">
+                            <form id="formClima">
+                                <div class="form-group">
+                                    <label for="ciudad">
+                                        Ciudad
+                                        <i class="fas fa-info-circle text-info" data-toggle="tooltip"
+                                           title="Ingrese el nombre de la ciudad que desea consultar"></i>
+                                    </label>
+                                    <input type="text" id="ciudad" name="ciudad" class="form-control"
+                                           placeholder="Ejemplo: Puebla" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="countryCode">
+                                        Código del País
+                                        <i class="fas fa-info-circle text-info" data-toggle="tooltip"
+                                           title="Ingrese el código de dos letras según la norma ISO 3166-1 alpha-2.
+                               Consulte los códigos disponibles en
+                               https://www.iban.com/country-codes"></i>
+                                    </label>
+                                    <input type="text" id="countryCode" name="countryCode" class="form-control"
+                                           placeholder="Ejemplo: MX" maxlength="2" required>
+                                </div>
+                                <button type="submit" class="btn btn-info btn-block">
+                                    <i class="fas fa-cloud-sun"></i> Consultar Clima
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card expandible con resultados -->
+                <div class="col-md-6">
+                    <div class="card card-primary collapsed-card" id="cardClima">
+                        <div class="card-header">
+                            <h3 class="card-title"><i class="fas fa-cloud"></i> Resultados del Clima</h3>
+                            <div class="card-tools" id="cardTools" style="display: none;">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="text-info">Temperatura: <span id="temp">-</span>°C</h5>
+                                    <h6>Descripción: <span id="descripcion">-</span></h6>
+                                    <p>Nubosidad: <span id="nubes">-</span>% | Humedad: <span id="humedad">-</span>%</p>
+                                    <p>Salida del sol: <span id="salida">-</span></p>
+                                    <p>Puesta del sol: <span id="puesta">-</span></p>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <img id="iconoClima" alt="Icono del clima" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video -->
+            <div id="video" class="card card-danger">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fab fa-youtube"></i> Video sobre Puebla</h3>
+                </div>
+                <div class="card-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/video_id" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mapa -->
+            <div id="mapa" class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-map-marker-alt"></i> Mapa de Puebla</h3>
+                </div>
+                <div class="card-body">
+                    <div class="embed-responsive embed-responsive-4by3">
+                        <iframe src="https://www.google.com/maps/embed?pb=..." class="embed-responsive-item" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gasolina -->
+            <div id="gasolina" class="card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-gas-pump"></i> Precios de Gasolina</h3>
+                </div>
+                <div class="card-body text-center">
+                    @* <img src="" alt="Precios de gasolina" class="img-fluid rounded"> *@
+                </div>
+            </div>
+
+            <!-- Conversor -->
+            <div id="conversor" class="card card-secondary">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-exchange-alt"></i> Conversor de Divisas</h3>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-secondary btn-block">
+                        <i class="fas fa-coins"></i> Abrir Conversor
+                    </button>
+                </div>
+            </div>
+
+            <!-- Cámara -->
+            <div id="camara" class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-camera"></i> Capturar Fotografía</h3>
+                </div>
+                <div class="card-body text-center">
+                    <button class="btn btn-primary mb-3">
+                        <i class="fas fa-camera-retro"></i> Tomar Foto
+                    </button>
+                    <div id="vistaFoto" class="border p-2 rounded bg-light"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content-wrapper -->
+
+<!-- Footer -->
+@await Html.PartialAsync("_Footer")
