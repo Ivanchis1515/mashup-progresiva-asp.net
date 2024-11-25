@@ -51,16 +51,45 @@
 
             //crea el contenido HTML dinamico con los datos del clima
             const contenidoHTML = `
-            <div class="row">
-                <div class="col-md-6">
-                    <h5 class="text-info">Temperatura: <span>${climaData.temperatura}</span></h5>
-                    <h6>Descripción: <span>${climaData.climaDescripcion}</span></h6>
-                    <p>Nubosidad: <span>${climaData.porcentajeNubes}</span> | Humedad: <span>${climaData.porcentajeHumedad}</span></p>
-                    <p>Salida del sol: <span>${climaData.amanecer}</span></p>
-                    <p>Puesta del sol: <span>${climaData.anocher}</span></p>
-                </div>
-                <div class="col-md-6 text-center">
-                    <img src="weather-icons-master/production/fill/openweathermap/${climaData.imagen}.svg" alt="Icono del clima" class="img-fluid">
+            <div class="card shadow-sm text-center">
+                <div class="card-body">
+                    <!-- Icono del clima -->
+                    <div class="mb-3">
+                        <img src="weather-icons-master/production/fill/openweathermap/${climaData.imagen}.svg" 
+                             alt="Icono del clima" 
+                             class="img-fluid" 
+                             style="width: 50px; height: 50px;">
+                    </div>
+
+                    <!-- Temperatura -->
+                    <h2 class="text-primary mb-2">${climaData.temperatura}</h2>
+
+                    <!-- Descripción -->
+                    <h5 class="text-secondary mb-3">${climaData.climaDescripcion}</h5>
+
+                    <!-- Nubosidad y Humedad -->
+                    <div class="d-flex justify-content-center gap-3 mb-3">
+                        <div>
+                            <i class="meteocons-cloud" style="font-size: 20px;"></i>
+                            <span>Nubosidad: ${climaData.porcentajeNubes}</span>
+                        </div>
+                        <div>
+                            <i class="meteocons-droplet" style="font-size: 20px;"></i>
+                            <span>Humedad: ${climaData.porcentajeHumedad}</span>
+                        </div>
+                    </div>
+
+                    <!-- Horas de amanecer y anochecer -->
+                    <div>
+                        <p class="mb-1">
+                            <i class="meteocons-sunrise" style="font-size: 20px;"></i> 
+                            Amanecer: ${climaData.amanecer}
+                        </p>
+                        <p>
+                            <i class="meteocons-sunset" style="font-size: 20px;"></i> 
+                            Puesta de sol: ${climaData.anocher}
+                        </p>
+                    </div>
                 </div>
             </div>`;
 
